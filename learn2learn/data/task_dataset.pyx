@@ -143,7 +143,7 @@ cdef class CythonTaskDataset:
             all_data.append(data)
         return self.task_collate(all_data)
 
-    def sample(self):
+    def sample(self, index = -1):
         """
         **Description**
 
@@ -154,7 +154,10 @@ cdef class CythonTaskDataset:
         X, y = taskset.sample()
         ~~~
         """
-        i = random.randint(0, len(self) - 1)
+        if index == -1:
+            i = random.randint(0, len(self) - 1)
+        else:
+            i = index
         return self[i]
 
     def __len__(self):
