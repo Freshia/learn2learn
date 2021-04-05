@@ -158,7 +158,7 @@ cdef class CythonTaskDataset:
             i = random.randint(0, len(self) - 1)
         else:
             i = index
-        return self[i]
+        return i, self[i]
 
     def __len__(self):
         if self.num_tasks == -1:
